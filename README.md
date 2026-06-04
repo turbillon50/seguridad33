@@ -26,9 +26,11 @@ El objetivo es transmitir, en una sola experiencia, la sensación de un producto
 
 ## ✨ Características
 
+- 🎬 **Landing de bienvenida con hero cinemático** (aurora animada, grid en perspectiva, scan de seguridad, mockups flotantes y animaciones al hacer scroll).
+- 🧑‍💼 **Flujo de registro de usuario** en 2 pasos + inicio de sesión, con Google y “Demo Access”.
 - 🎨 **Diseño premium** inspirado en Apple HIG, Linear, Stripe, Arc, Notion y Vercel.
 - 🌗 **Modo claro y oscuro** con conmutador y persistencia.
-- 📱 **Responsive total** (Desktop / Tablet / Mobile) + base **PWA** instalable.
+- 📱 **PWA instalable y responsive total** (móvil + escritorio): manifest, **service worker offline** e íconos maskable. Se instala como app desde el navegador.
 - 🧭 **Totalmente navegable** mediante router por hash, sin recargar la página.
 - ⚡ **Cero build, cero dependencias de servidor** — abre `index.html` y funciona.
 - 📊 **Gráficas interactivas** (Chart.js vía CDN).
@@ -62,7 +64,7 @@ npx serve .
 - **GitHub Pages:** activa Pages sobre la rama y la raíz `/`.
 - **Netlify:** arrastra la carpeta.
 
-> En el login usa el botón **“Demo Access”**, **Google** o **Iniciar sesión** (cualquiera entra al panel).
+> Flujo: **Landing (hero cinemático) → Crear cuenta / Iniciar sesión → Panel**. Cualquier botón (**Demo Access**, **Google** o **Entrar al demo**) entra al panel. En navegador compatible verás el aviso **“Instalar ENYA OPS”** para añadirla como app.
 
 ---
 

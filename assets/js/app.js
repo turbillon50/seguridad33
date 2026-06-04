@@ -170,32 +170,107 @@
 
   function enterApp() {
     sessionStorage.setItem("enya-auth", "1");
+    appMounted = false;
+    if (location.hash !== "#/dashboard") location.hash = "#/dashboard";
     mount();
+  }
+
+  function logout() {
+    sessionStorage.removeItem("enya-auth");
+    appMounted = false;
+    location.hash = "#/welcome";
+    renderPublic();
+  }
+  global.__enyaEnter = enterApp;          // usado por el sitio público (public.js)
+  global.__enyaEmail = "director@enyaops.mx";
+
+  /* ---------- Routing público / privado ---------- */
+  const PUB = new Set(["", "#", "#/", "#/welcome", "#/registro", "#/login"]);
+  const isPublic = (h) => PUB.has(h || "");
+  let appMounted = false;
+
+  function renderPublic() {
+    const root = document.getElementById("app-root");
+    const h = location.hash;
+    let view;
+    if (h === "#/registro") view = global.PUBLIC.registro();
+    else if (h === "#/login") view = global.PUBLIC.login();
+    else view = global.PUBLIC.landing();
+    root.innerHTML = "";
+    root.appendChild(view);
+    window.scrollTo(0, 0);
+  }
+
+  function wireShell() {
+    document.getElementById("themeBtn").addEventListener("click", toggleTheme);
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.toggle("open");
+      document.getElementById("scrim").classList.toggle("show");
+    });
+    document.getElementById("scrim").addEventListener("click", () => {
+      document.getElementById("sidebar").classList.remove("open");
+      document.getElementById("scrim").classList.remove("show");
+    });
+    const av = document.querySelector(".header .avatar");
+    if (av) av.addEventListener("click", () => { if (confirm("¿Cerrar sesión y volver al inicio?")) logout(); });
   }
 
   /* ---------- Mount root ---------- */
   function mount() {
-    const root = document.getElementById("app-root");
-    root.innerHTML = "";
     applyTheme(getTheme());
     if (sessionStorage.getItem("enya-auth")) {
-      root.appendChild(appView());
-      document.getElementById("themeBtn").addEventListener("click", toggleTheme);
-      document.getElementById("menuBtn").addEventListener("click", () => {
-        document.getElementById("sidebar").classList.toggle("open");
-        document.getElementById("scrim").classList.toggle("show");
-      });
-      document.getElementById("scrim").addEventListener("click", () => {
-        document.getElementById("sidebar").classList.remove("open");
-        document.getElementById("scrim").classList.remove("show");
-      });
-      if (!location.hash) location.hash = "#/dashboard";
+      if (isPublic(location.hash)) { location.hash = "#/dashboard"; }
+      if (!appMounted) {
+        const root = document.getElementById("app-root");
+        root.innerHTML = "";
+        root.appendChild(appView());
+        wireShell();
+        appMounted = true;
+      }
+      if (isPublic(location.hash)) location.hash = "#/dashboard";
       route();
     } else {
-      root.appendChild(loginView());
+      appMounted = false;
+      renderPublic();
     }
   }
 
-  window.addEventListener("hashchange", () => { if (sessionStorage.getItem("enya-auth")) route(); });
-  document.addEventListener("DOMContentLoaded", mount);
+  function onHash() {
+    if (sessionStorage.getItem("enya-auth")) {
+      if (isPublic(location.hash)) { location.hash = "#/dashboard"; return; }
+      if (!appMounted) { mount(); return; }
+      route();
+    } else {
+      renderPublic();
+    }
+  }
+
+  /* ---------- PWA: Service Worker + instalación ---------- */
+  function registerSW() {
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => { navigator.serviceWorker.register("sw.js").catch(() => {}); });
+    }
+  }
+  let deferredPrompt = null;
+  function installToast() {
+    if (document.getElementById("enyaInstallToast")) return;
+    const t = U.el(`<div class="install-toast" id="enyaInstallToast">
+      <span class="ic">${D.logoMark(22)}</span>
+      <div style="flex:1"><b>Instala ENYA OPS</b><br><small>Acceso directo, pantalla completa y modo offline.</small></div>
+      <button class="btn btn--primary btn--sm" id="enyaInstallBtn">Instalar</button>
+      <span class="x" id="enyaInstallX">✕</span>
+    </div>`);
+    document.body.appendChild(t);
+    requestAnimationFrame(() => t.classList.add("show"));
+    t.querySelector("#enyaInstallBtn").addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+      deferredPrompt.prompt(); await deferredPrompt.userChoice; deferredPrompt = null; t.remove();
+    });
+    t.querySelector("#enyaInstallX").addEventListener("click", () => t.remove());
+  }
+  window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; setTimeout(installToast, 2600); });
+  window.addEventListener("appinstalled", () => { const t = document.getElementById("enyaInstallToast"); if (t) t.remove(); });
+
+  window.addEventListener("hashchange", onHash);
+  document.addEventListener("DOMContentLoaded", () => { registerSW(); mount(); });
 })(window);
