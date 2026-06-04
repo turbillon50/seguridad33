@@ -1,0 +1,18 @@
+{
+  "name": "ENYA OPS — Energización y Aplicaciones de Seguridad",
+  "short_name": "ENYA OPS",
+  "description": "Plataforma SaaS premium para administración integral de empresas de seguridad electrónica.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0A0E1A",
+  "theme_color": "#2563EB",
+  "lang": "es-MX",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'><rect width='48' height='48' rx='13' fill='%232563EB'/><path d='M24 9l11 5.5v9c0 7-4.7 11.2-11 13.5C17.7 34.7 13 30.5 13 23.5v-9L24 9z' fill='rgba(255,255,255,.16)' stroke='white' stroke-width='1.6' stroke-linejoin='round'/><path d='M20 24l3 3 6-6.5' stroke='white' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
