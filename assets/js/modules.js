@@ -309,7 +309,13 @@
   /* ============== APP DE CAMPO (mobile) ============== */
   M.field = () => ({
     html: `
-      ${U.pageHead("App de Campo", "Versión móvil para técnicos · vista previa interactiva (demo).")}
+      ${U.pageHead("App de Campo", "Versión móvil para técnicos · vista previa interactiva (demo).",
+        `<a class="btn btn--primary btn--sm" href="tecnico/index.html" target="_blank" rel="noopener">${I.field} Abrir App Técnico (PWA)</a>`)}
+      <div class="card card--pad" style="margin-bottom:18px;display:flex;align-items:center;gap:14px;background:var(--brand-grad);color:#fff;border:none">
+        <span class="kpi__icon" style="background:rgba(255,255,255,.18)">${I.field}</span>
+        <div style="flex:1"><b style="font-size:15px">App Técnico instalable (PWA)</b><div style="opacity:.9;font-size:13px">Construida con tu diseño de Google Stitch · funciona offline e instalable en el celular.</div></div>
+        <a class="btn btn--sm" href="tecnico/index.html" target="_blank" rel="noopener" style="background:#fff;color:var(--brand)">Abrir ahora →</a>
+      </div>
       <div class="phones">
         <div class="phone"><div class="phone__screen"><div class="phone__notch"><span></span></div><div class="phone__body">
           <div class="phone__top"><h4>Mis Órdenes</h4><div style="opacity:.9;font-size:12px">Hoy · 4 asignadas</div></div>

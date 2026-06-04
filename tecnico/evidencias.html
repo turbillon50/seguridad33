@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="ENYA Tecnico"/>
+<link rel="apple-touch-icon" href="icon-192.png"/>
+<link rel="icon" href="icon.svg" type="image/svg+xml"/>
+<title>ENYA OPS - Evidence Capture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#003ea8",
+                    "outline-variant": "#c3c6d7",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#0053db",
+                    "on-primary-fixed": "#00174b",
+                    "on-secondary-fixed": "#001e2f",
+                    "on-secondary-fixed-variant": "#004c6e",
+                    "tertiary-fixed": "#ffdbcd",
+                    "surface-container-low": "#f3f3fe",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-container-high": "#e7e7f3",
+                    "on-primary": "#ffffff",
+                    "on-primary-container": "#eeefff",
+                    "primary": "#004ac6",
+                    "secondary-fixed-dim": "#89ceff",
+                    "surface-bright": "#faf8ff",
+                    "tertiary-fixed-dim": "#ffb596",
+                    "outline": "#737686",
+                    "on-tertiary-container": "#ffede6",
+                    "on-surface": "#191b23",
+                    "tertiary": "#943700",
+                    "secondary-container": "#39b8fd",
+                    "on-tertiary-fixed-variant": "#7d2d00",
+                    "surface-container": "#ededf9",
+                    "inverse-surface": "#2e3039",
+                    "background": "#faf8ff",
+                    "secondary": "#006591",
+                    "primary-container": "#2563eb",
+                    "surface-container-highest": "#e1e2ed",
+                    "surface-variant": "#e1e2ed",
+                    "on-secondary-container": "#004666",
+                    "on-tertiary-fixed": "#360f00",
+                    "surface": "#faf8ff",
+                    "secondary-fixed": "#c9e6ff",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#f0f0fb",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-dim": "#d9d9e5",
+                    "on-surface-variant": "#434655",
+                    "on-tertiary": "#ffffff",
+                    "on-background": "#191b23",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#bc4800",
+                    "primary-fixed": "#dbe1ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "xs": "4px",
+                    "lg": "24px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "xl": "32px",
+                    "margin": "32px",
+                    "md": "16px",
+                    "xxl": "48px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .signature-canvas {
+            background-image: radial-gradient(#c3c6d7 0.5px, transparent 0.5px);
+            background-size: 16px 16px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant shadow-sm flex justify-between items-center w-full px-4 h-16 sticky z-40">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img alt="Technician profile photo" class="w-full h-full object-cover" data-alt="A professional headshot of a security operations technician wearing a navy blue uniform. The lighting is crisp and corporate, set against a clean, light-colored professional background. He has a focused and reliable expression, embodying the secure and authoritative personality of the ENYA OPS brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQfL9a9SVpP48yOtm55FASpX1hpsbzJ9cFdTqF4fTrMeVxiAu7mur-oc0zyaUYPhn3iNMR5Ens9do7ASM26QjAldfWlJ0xLjpDCbSJftZ6yQhtbx6svzK3On-oDDF8OEFu-Sbc9WI3zROkd_NlUMmd9zFBLlF5lVMufwn7miSE4l8lVJ_cSrL7rAiuXHCdgZeua1_Ccqnw--B0qLj8LSHvtcKq17UwMNvYjRHWjnATx4VNbh4kTijS7gPUoTsYlOtQPtQ9-8oWUhCM"/>
+</div>
+<h1 class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary">ENYA OPS</h1>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</button>
+</header>
+<main class="flex-1 px-4 lg:px-xl py-lg max-w-7xl mx-auto w-full mb-24">
+<!-- Title & Primary Actions -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<nav class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="text-label-md font-label-md">Orders</span>
+<span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+<span class="text-label-md font-label-md">Job #8821</span>
+</nav>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Evidencias</h2>
+</div>
+<div class="flex flex-wrap gap-sm">
+<button class="flex items-center gap-xs bg-primary text-on-primary px-md py-sm rounded-xl font-label-md hover:opacity-90 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined" data-icon="add_a_photo">add_a_photo</span>
+                    Add Photo
+                </button>
+<button class="flex items-center gap-xs bg-secondary-container text-on-secondary-container px-md py-sm rounded-xl font-label-md hover:opacity-90 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined" data-icon="video_call">video_call</span>
+                    Add Video
+                </button>
+<button class="flex items-center gap-xs bg-surface-container-high text-on-surface-variant px-md py-sm rounded-xl font-label-md border border-outline-variant hover:bg-surface-variant transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="upload_file">upload_file</span>
+                    Upload Document
+                </button>
+</div>
+</div>
+<!-- Evidence Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-md mb-xxl">
+<!-- Image Card -->
+<div class="group relative aspect-square bg-surface-container rounded-xl overflow-hidden border border-outline-variant hover:shadow-md transition-all cursor-pointer">
+<img alt="Security Installation" class="w-full h-full object-cover transition-transform group-hover:scale-105" data-alt="A detailed close-up of a high-tech security camera mounted on a modern concrete wall. The image features sharp focus on the glass lens and metallic casing, captured in high-key natural daylight. The aesthetic is clean, industrial, and secure, fitting the professional ENYA OPS corporate visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUFqIYP6J3xIpp6AQbjnd1skQZZwaz4hsz1oc0_enJqepJ4MS843cLCxV5pmqKp8e0gZ5t7UK5yfcY_TmT35i1fN0MGhETZ1wyLFWlJYbX3tIA3WeAw7zgbsuVVj1wMdC4YF33qT2971GYFDw1E1fVyJOm2k2xu7Rw7DQtObBJ6IYBQKkW9Ssj3wUuW9eBAzEZ-BRIfZ19jmlog15_q3QZ0lBx4LfvKecknVFICDRGTZmQgeukL36YPdA3lFbiu0k5VKXItYr-N2JA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-sm">
+<span class="text-white text-label-sm font-label-sm">IMG_0921.jpg</span>
+</div>
+</div>
+<!-- Video Card -->
+<div class="group relative aspect-square bg-surface-container rounded-xl overflow-hidden border border-outline-variant hover:shadow-md transition-all cursor-pointer">
+<div class="absolute inset-0 flex items-center justify-center z-10">
+<div class="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 text-white">
+<span class="material-symbols-outlined" data-icon="play_arrow" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+</div>
+<img alt="Site Overview" class="w-full h-full object-cover" data-alt="A wide-angle cinematic shot of a construction site security perimeter at twilight. Cool blue lighting dominates the scene with warm amber construction lights providing contrast. The frame suggests a professional surveillance environment with structural rigor and high-tech security monitoring." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhts37i5WONMaznT_TW79fF2LUH6BE6t_vav3EXXkZUVpJFh5H8Jk-DkPMeEfxTNvEXlMKtGhEnojOcXqevZfWr13wMlAToi4BSf0d-QSiSYZHpYZhcz2slV3KcN1ZQOX2kSSnlRH0gb_RRzjxB0EAh0WMeyvfaSepFKTfnrFRtpH5LidNHVpemPnmWE4LStTj3SEb_QzA6bno4M6ajrOOjcu-FbgDvUYfuO_zg6w0T0cd6Rx5dQO9mHuy_fBp7b5VlQ8sw-LjNv09"/>
+<div class="absolute bottom-sm left-sm bg-black/40 backdrop-blur-sm px-xs py-0.5 rounded text-[10px] text-white font-bold">0:24</div>
+</div>
+<!-- Image Card -->
+<div class="group relative aspect-square bg-surface-container rounded-xl overflow-hidden border border-outline-variant hover:shadow-md transition-all cursor-pointer">
+<img alt="Server Wiring" class="w-full h-full object-cover" data-alt="A macro shot of complex server wiring inside a data center cabinet. Neon blue indicator lights glow against the matte black hardware. The focus is precise and mathematical, showcasing the advanced technical infrastructure managed by ENYA OPS in a futuristic, corporate-tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEdg0KL4fUIVi0dHXAOudX0DoXDjxe4ffh8l2U7ngl-pib8xxUWJv5QVUx8rRLqYCV9n10yijaEeb8dBS3LDQ_j8fFH8eqsH_vQ49UDBSg30LBfQLeJ83d4j-lckPUWlN_kgTKSO5CPoGKo7Jl3yBbUC3uPmC9Swc8UGKD8lKzhtqlUYNfSnyPg5E0-sMs-caCgXrCxxB5v19XXImcuRaPhMpqMDJAHWxGgyY1j4lpuUNoxjTHgk9XQq5ic7WD5AllWLVspP_Z7YBa"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-sm">
+<span class="text-white text-label-sm font-label-sm">wiring_check.jpg</span>
+</div>
+</div>
+<!-- Doc Card -->
+<div class="flex flex-col items-center justify-center aspect-square bg-white rounded-xl border-2 border-dashed border-outline-variant hover:border-primary hover:bg-primary/5 transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-outline group-hover:text-primary mb-sm text-4xl" data-icon="cloud_upload">cloud_upload</span>
+<span class="text-label-md font-label-md text-on-surface-variant group-hover:text-primary">New Evidence</span>
+</div>
+</div>
+<!-- Signature Section -->
+<section class="max-w-2xl mx-auto">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg shadow-sm">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-primary" data-icon="border_color">border_color</span>
+<h3 class="text-headline-sm font-headline-sm text-on-surface">Client Approval</h3>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mb-lg">
+                    By signing below, the client acknowledges that the services and evidences captured above represent the completed work as per the service level agreement.
+                </p>
+<!-- Signature Pad -->
+<div class="relative bg-surface rounded-lg border border-outline-variant h-48 signature-canvas mb-md flex items-center justify-center group">
+<canvas class="absolute inset-0 w-full h-full cursor-crosshair" id="signature-pad"></canvas>
+<span class="text-label-sm font-label-sm text-outline pointer-events-none group-active:hidden">Sign Here</span>
+<button class="absolute top-sm right-sm w-8 h-8 flex items-center justify-center rounded-full bg-white/80 border border-outline-variant text-on-surface-variant hover:text-error transition-colors" id="clear-signature">
+<span class="material-symbols-outlined text-sm" data-icon="close">close</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-lg">
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Client Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-sm" placeholder="Full name" type="text"/>
+</div>
+<div>
+<label class="block text-label-md font-label-md text-on-surface mb-xs">Date</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-sm focus:ring-2 focus:ring-primary focus:border-primary outline-none text-body-sm" type="date" value="2023-11-24"/>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary py-md rounded-xl font-headline-sm hover:brightness-110 transition-all active:scale-[0.98] shadow-md flex justify-center items-center gap-sm">
+<span class="material-symbols-outlined" data-icon="task_alt">task_alt</span>
+                    Submit All Evidences
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar from JSON -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-3 bg-surface-container border-t border-outline-variant rounded-t-xl shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="assignment">assignment</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-label-sm font-label-sm">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-5 py-1 active:scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-sm font-label-sm">More</span>
+</a>
+</nav>
+<!-- Desktop Sidebar for Web -->
+<aside class="hidden md:flex fixed left-0 top-16 bottom-0 w-20 flex-col items-center py-lg bg-surface border-r border-outline-variant gap-lg z-30">
+<button class="w-12 h-12 flex items-center justify-center rounded-xl bg-primary-container text-on-primary-container shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+</button>
+<button class="w-12 h-12 flex items-center justify-center rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</button>
+<button class="mt-auto w-12 h-12 flex items-center justify-center rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</aside>
+<script>
+        // Simple Signature Pad Implementation
+        const canvas = document.getElementById('signature-pad');
+        const ctx = canvas.getContext('2d');
+        const clearBtn = document.getElementById('clear-signature');
+        let drawing = false;
+
+        function resizeCanvas() {
+            const ratio = Math.max(window.devicePixelRatio || 1, 1);
+            canvas.width = canvas.offsetWidth * ratio;
+            canvas.height = canvas.offsetHeight * ratio;
+            ctx.scale(ratio, ratio);
+            ctx.lineWidth = 2;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#004ac6';
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        const getPos = (e) => {
+            const rect = canvas.getBoundingClientRect();
+            return {
+                x: (e.clientX || e.touches[0].clientX) - rect.left,
+                y: (e.clientY || e.touches[0].clientY) - rect.top
+            };
+        };
+
+        const start = (e) => {
+            drawing = true;
+            const pos = getPos(e);
+            ctx.beginPath();
+            ctx.moveTo(pos.x, pos.y);
+        };
+
+        const draw = (e) => {
+            if (!drawing) return;
+            e.preventDefault();
+            const pos = getPos(e);
+            ctx.lineTo(pos.x, pos.y);
+            ctx.stroke();
+        };
+
+        const stop = () => {
+            drawing = false;
+        };
+
+        canvas.addEventListener('mousedown', start);
+        canvas.addEventListener('mousemove', draw);
+        window.addEventListener('mouseup', stop);
+
+        canvas.addEventListener('touchstart', start);
+        canvas.addEventListener('touchmove', draw);
+        window.addEventListener('touchend', stop);
+
+        clearBtn.addEventListener('click', () => {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        });
+    </script>
+<script src="pwa.js" defer></script>
+</body></html>

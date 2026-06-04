@@ -3,6 +3,8 @@ node_modules/
 # Builds
 dist/
 .vercel/
+# Extracción temporal del export de Stitch
+.stitch_src/
 # Sistema
 .DS_Store
 Thumbs.db

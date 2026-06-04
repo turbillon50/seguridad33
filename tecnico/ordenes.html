@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="ENYA Tecnico"/>
+<link rel="apple-touch-icon" href="icon-192.png"/>
+<link rel="icon" href="icon.svg" type="image/svg+xml"/>
+<title>ENYA OPS - Mis Órdenes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for high-density feel */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c3c6d7;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline-variant": "#c3c6d7",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f3f3fe",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "primary": "#004ac6",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "outline": "#737686",
+                        "on-tertiary-container": "#ffede6",
+                        "on-surface": "#191b23",
+                        "tertiary": "#943700",
+                        "secondary-container": "#39b8fd",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container": "#ededf9",
+                        "inverse-surface": "#2e3039",
+                        "background": "#faf8ff",
+                        "secondary": "#006591",
+                        "primary-container": "#2563eb",
+                        "surface-container-highest": "#e1e2ed",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary-container": "#004666",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface": "#faf8ff",
+                        "secondary-fixed": "#c9e6ff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-dim": "#d9d9e5",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191b23",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#bc4800",
+                        "primary-fixed": "#dbe1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin": "32px",
+                        "md": "16px",
+                        "xxl": "48px",
+                        "base": "4px"
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased">
+<!-- TopAppBar Section -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-4 h-16 sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<img alt="Technician profile photo" class="w-10 h-10 rounded-full border border-outline-variant object-cover" data-alt="A professional close-up portrait of a male technician in a dark blue security operations uniform. He is standing against a soft-focus background of a modern control room with cool blue lighting. The image captures a sense of reliability and expertise, maintaining a high-contrast corporate aesthetic with crisp details and professional studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAFndq9abN4TvWYRLDwl0miuubs19fY22cxSgXFR9USxrxZEvUFwufJ-2iKXo3UglLwizPOEBnitWOyhlBDbpv_YuLi_OGHVZxygXmYFeOFXyoszqevEDanq_f6OBi9Yv4LAGPJi4JOi_ebz9IHXqOb13N6S7Bh2SyS4mpMdO46kQqp3LxpN2d5ztJEgdBvvhGtk_9urDx59yp8lqAgFmnYvM8QCjoy7QU5GCMK8GJVFqk5UX5Bs6ux_NYQ-0hjaVNBX2kC8SOCuMC"/>
+<span class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary dark:text-primary-fixed-dim">ENYA OPS</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-2 rounded-full active:scale-95 duration-150">notifications</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 py-6 mb-24 md:mb-8">
+<!-- Dashboard Header -->
+<div class="mb-8">
+<h1 class="text-headline-lg font-headline-lg text-on-surface mb-2">Mis Órdenes</h1>
+<p class="text-body-md font-body-md text-on-surface-variant">Gestión de operaciones de seguridad y mantenimiento en campo.</p>
+</div>
+<!-- Search and Filters -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-4 mb-8 sticky top-[64px] bg-background/80 backdrop-blur-md py-4 z-30">
+<div class="md:col-span-6 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl pl-10 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all text-body-md font-body-md" placeholder="Buscar por número, cliente o ubicación..." type="text"/>
+</div>
+<div class="md:col-span-6 flex gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+<button class="bg-primary text-on-primary px-4 py-2 rounded-full text-label-md font-label-md whitespace-nowrap shadow-sm hover:opacity-90 transition-all">Todos</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-outline-variant transition-all">En Progreso</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-outline-variant transition-all">Programado</button>
+<button class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-full text-label-md font-label-md whitespace-nowrap hover:bg-outline-variant transition-all">Completado</button>
+</div>
+</div>
+<!-- Work Orders Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Order Card 1: High Priority / In Progress -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col group">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">#WO-8829</span>
+<span class="flex items-center gap-1 bg-error-container text-on-error-container px-2 py-0.5 rounded-md text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> Alta
+                    </span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Corporativo Arcos</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-sm font-body-sm">Distrito Tecnológico, Torre A</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2 text-primary">
+<span class="material-symbols-outlined text-[18px] animate-pulse">sync</span>
+<span class="text-label-md font-label-md">En Progreso</span>
+</div>
+<button class="p-2 hover:bg-primary-container hover:text-on-primary-container rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Order Card 2: Medium Priority / Programmed -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">#WO-8831</span>
+<span class="flex items-center gap-1 bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded-md text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">stat_1</span> Media
+                    </span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Residencial Valle</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-sm font-body-sm">Sector Poniente, Calle 12</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-md font-label-md">Programado</span>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Order Card 3: Live Map Preview (Bento Large) -->
+<div class="lg:col-span-2 lg:row-span-2 bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm flex flex-col">
+<div class="relative h-full min-h-[300px]">
+<img class="w-full h-full object-cover" data-alt="A highly detailed 3D digital map visualization of a dense urban environment at dusk. The map uses a sophisticated dark theme with glowing neon blue lines for main roads and golden markers for active service locations. Soft ambient lighting illuminates the architectural forms of buildings, creating a high-tech security operations center aesthetic. The mood is precise, modern, and data-driven." data-location="Madrid City Center" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk-r3KjqUdPlbofL2cIDwT2GbGxtixiGTt8hEZL1d5gCpnqH4HajbdlAPHOBymjirAgXW3hJF94WkL-0k2IqxuD59BfTPXCYS-3Qjti_xd4tMUtc7bPclzEEqqT9EcYBz3SF01sXHMvEoNAJR_qoeazmL5JR2WizGvPDAHB3d6rjkVg-OFgPk-aIwmFcPeEbcVWJhLEIZB894r18YaBzq8QRnX0KiFSC1gHBHPrtd70AOGC9ywGoBeyuxEMcxtxxdsWXigzdHxrlU7"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4 flex justify-between items-end">
+<div class="text-white">
+<p class="text-label-sm font-label-sm opacity-80 uppercase">Ubicación Actual</p>
+<h4 class="text-headline-sm font-headline-sm">Zonas de Intervención Activa</h4>
+</div>
+<button class="bg-primary text-white p-3 rounded-full shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">my_location</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Order Card 4: Low Priority / Completed -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">#WO-8790</span>
+<span class="flex items-center gap-1 bg-surface-container-high text-on-surface-variant px-2 py-0.5 rounded-md text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">stat_minus_1</span> Baja
+                    </span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Plaza Comercial Luna</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-sm font-body-sm">Avenida Principal 450</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2 text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">check_circle</span>
+<span class="text-label-md font-label-md">Completado</span>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">receipt_long</span>
+</button>
+</div>
+</div>
+<!-- Order Card 5: High Priority / Programmed -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="text-label-sm font-label-sm text-outline uppercase tracking-wider">#WO-8840</span>
+<span class="flex items-center gap-1 bg-error-container text-on-error-container px-2 py-0.5 rounded-md text-label-sm font-label-sm">
+<span class="material-symbols-outlined text-[14px]">priority_high</span> Alta
+                    </span>
+</div>
+<h3 class="text-headline-sm font-headline-sm text-on-surface mb-1">Data Center Central</h3>
+<div class="flex items-center gap-2 text-on-surface-variant mb-4">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+<span class="text-body-sm font-body-sm">Parque Industrial Módulo 4</span>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant flex justify-between items-center">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined text-[18px]">calendar_today</span>
+<span class="text-label-md font-label-md">Programado (Mañana)</span>
+</div>
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB for primary action -->
+<button class="fixed bottom-24 right-6 bg-primary-container text-on-primary-container p-4 rounded-full shadow-2xl z-50 flex items-center justify-center hover:scale-105 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+<!-- BottomNavBar Section -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-3 bg-surface-container dark:bg-surface-container-low border-t border-outline-variant dark:border-outline shadow-lg rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-dim text-on-primary-container dark:text-on-primary-fixed rounded-full px-5 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="text-label-sm font-label-sm">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="text-label-sm font-label-sm">More</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+<script src="pwa.js" defer></script>
+</body></html>
