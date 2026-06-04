@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="ENYA Tecnico"/>
+<link rel="apple-touch-icon" href="icon-192.png"/>
+<link rel="icon" href="icon.svg" type="image/svg+xml"/>
+<title>Checklist CCTV - ENYA OPS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#003ea8",
+                        "outline-variant": "#c3c6d7",
+                        "error": "#ba1a1a",
+                        "surface-tint": "#0053db",
+                        "on-primary-fixed": "#00174b",
+                        "on-secondary-fixed": "#001e2f",
+                        "on-secondary-fixed-variant": "#004c6e",
+                        "tertiary-fixed": "#ffdbcd",
+                        "surface-container-low": "#f3f3fe",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "surface-container-high": "#e7e7f3",
+                        "on-primary": "#ffffff",
+                        "on-primary-container": "#eeefff",
+                        "primary": "#004ac6",
+                        "secondary-fixed-dim": "#89ceff",
+                        "surface-bright": "#faf8ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "outline": "#737686",
+                        "on-tertiary-container": "#ffede6",
+                        "on-surface": "#191b23",
+                        "tertiary": "#943700",
+                        "secondary-container": "#39b8fd",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container": "#ededf9",
+                        "inverse-surface": "#2e3039",
+                        "background": "#faf8ff",
+                        "secondary": "#006591",
+                        "primary-container": "#2563eb",
+                        "surface-container-highest": "#e1e2ed",
+                        "surface-variant": "#e1e2ed",
+                        "on-secondary-container": "#004666",
+                        "on-tertiary-fixed": "#360f00",
+                        "surface": "#faf8ff",
+                        "secondary-fixed": "#c9e6ff",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#f0f0fb",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-dim": "#d9d9e5",
+                        "on-surface-variant": "#434655",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191b23",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#bc4800",
+                        "primary-fixed": "#dbe1ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "xl": "32px",
+                        "margin": "32px",
+                        "md": "16px",
+                        "xxl": "48px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.03em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .progress-bar-transition {
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .checklist-item-active {
+            border-left: 4px solid #2563eb;
+            background: rgba(37, 99, 235, 0.04);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim docked full-width top-0 border-b border-outline-variant dark:border-outline shadow-sm flex justify-between items-center w-full px-4 h-16 sticky z-50">
+<div class="flex items-center gap-3">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-high rounded-full transition-colors">arrow_back</button>
+<h1 class="text-headline-sm font-headline-sm font-bold tracking-tight text-primary dark:text-primary-fixed-dim">ENYA OPS</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex gap-6 mr-6">
+<span class="text-primary dark:text-primary-fixed-dim font-bold font-label-md text-label-md cursor-pointer">Orders</span>
+<span class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md cursor-pointer hover:text-primary transition-colors">Map</span>
+<span class="text-on-surface-variant dark:text-surface-variant font-label-md text-label-md cursor-pointer hover:text-primary transition-colors">Inventory</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer p-2 hover:bg-surface-container-high rounded-full" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a security technician wearing a clean navy blue uniform. The lighting is crisp and corporate, with a soft-focus office background that suggests a high-tech operations center. The overall aesthetic is reliable and modern, using the primary blue brand colors for professional authority." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmvKEpJgK8WphnSaZPay-0yCP046P4TRn6Hvo1V5ovjku8Mc_IGQM1wau8IGNN9nMntyaOp2lWzjPDFE1909o5WoXr9epRo8kNws6ebr8TgcC3phdHC2R5lFTxqeMlZ7FEL1j7xDdxkUfBLdYEx1YR1x371Icvwb_Qnm2itPBQt55RnSiiyXuVJHr-iSTOXAHAuqJDN4CoemWWmZeu_FGGB7qf697imVwhilKJjbRNncr3C3Alth4mkVZiPajeM5bzRCeoUMa6-yKX"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 max-w-5xl w-full mx-auto px-4 py-8 mb-24">
+<!-- Checklist Header Section -->
+<div class="mb-8 space-y-4">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="text-headline-md font-headline-md text-on-surface">Checklist CCTV</h2>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Order #88214 • Installation at Site Alpha-9</p>
+</div>
+<div class="flex flex-col items-end gap-2 w-full md:w-auto">
+<div class="flex justify-between w-full md:w-64 mb-1">
+<span class="text-label-md font-label-md text-on-surface-variant">Completion Status</span>
+<span class="text-label-md font-label-md text-primary font-bold" id="progress-text">0%</span>
+</div>
+<div class="w-full md:w-64 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary progress-bar-transition" id="progress-bar" style="width: 0%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Layout for Checklist and Visuals -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Checklist Card (Primary) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant bg-surface-container-low flex justify-between items-center">
+<span class="text-label-md font-label-md uppercase tracking-wider text-on-surface-variant">Installation Steps</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">fact_check</span>
+</div>
+<div class="divide-y divide-outline-variant" id="checklist-container">
+<!-- Step 1 -->
+<label class="flex items-start p-6 cursor-pointer hover:bg-surface-container-low transition-all group">
+<div class="relative flex items-center mt-1">
+<input class="checklist-checkbox w-6 h-6 rounded border-outline text-primary focus:ring-primary-container cursor-pointer transition-all" type="checkbox" value="20"/>
+</div>
+<div class="ml-4 flex-1">
+<div class="flex justify-between items-start">
+<span class="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Revisión de cableado</span>
+<span class="text-label-sm font-label-sm px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed-variant">Critical</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Verify signal integrity for Cat6 and coaxial terminations.</p>
+</div>
+</label>
+<!-- Step 2 -->
+<label class="flex items-start p-6 cursor-pointer hover:bg-surface-container-low transition-all group">
+<div class="relative flex items-center mt-1">
+<input class="checklist-checkbox w-6 h-6 rounded border-outline text-primary focus:ring-primary-container cursor-pointer transition-all" type="checkbox" value="20"/>
+</div>
+<div class="ml-4 flex-1">
+<span class="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Instalación de cámaras</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Mounting and positioning based on the approved security plan.</p>
+</div>
+</label>
+<!-- Step 3 -->
+<label class="flex items-start p-6 cursor-pointer hover:bg-surface-container-low transition-all group">
+<div class="relative flex items-center mt-1">
+<input class="checklist-checkbox w-6 h-6 rounded border-outline text-primary focus:ring-primary-container cursor-pointer transition-all" type="checkbox" value="20"/>
+</div>
+<div class="ml-4 flex-1">
+<span class="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Configuración de NVR</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Network setup, storage allocation, and IP addressing.</p>
+</div>
+</label>
+<!-- Step 4 -->
+<label class="flex items-start p-6 cursor-pointer hover:bg-surface-container-low transition-all group">
+<div class="relative flex items-center mt-1">
+<input class="checklist-checkbox w-6 h-6 rounded border-outline text-primary focus:ring-primary-container cursor-pointer transition-all" type="checkbox" value="20"/>
+</div>
+<div class="ml-4 flex-1">
+<span class="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Pruebas de funcionamiento</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Latency check, night vision verification, and remote access test.</p>
+</div>
+</label>
+<!-- Step 5 -->
+<label class="flex items-start p-6 cursor-pointer hover:bg-surface-container-low transition-all group">
+<div class="relative flex items-center mt-1">
+<input class="checklist-checkbox w-6 h-6 rounded border-outline text-primary focus:ring-primary-container cursor-pointer transition-all" type="checkbox" value="20"/>
+</div>
+<div class="ml-4 flex-1">
+<span class="text-body-md font-semibold text-on-surface group-hover:text-primary transition-colors">Capacitación al cliente</span>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Handover of manuals, user creation, and mobile app setup.</p>
+</div>
+</label>
+</div>
+<!-- Action Footer -->
+<div class="p-6 bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+<button class="text-on-surface-variant font-label-md text-label-md flex items-center gap-2 hover:bg-surface-container-high px-4 py-2 rounded-lg transition-colors">
+<span class="material-symbols-outlined text-[18px]">attachment</span> Add Notes
+                    </button>
+<button class="bg-primary text-on-primary font-label-md text-label-md px-8 py-3 rounded-xl shadow-md hover:bg-on-primary-fixed-variant transition-all active:scale-95 flex items-center gap-2" id="save-btn">
+<span class="material-symbols-outlined text-[20px]">save</span>
+                        Save Progress
+                    </button>
+</div>
+</div>
+<!-- Side Cards (Context & Visuals) -->
+<div class="lg:col-span-5 space-y-6">
+<!-- Live Preview/Visual Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden">
+<div class="p-4 border-b border-outline-variant flex items-center justify-between">
+<h3 class="text-label-md font-label-md font-bold text-on-surface-variant uppercase tracking-tighter">Site Map Preview</h3>
+<span class="material-symbols-outlined text-primary" data-icon="map">map</span>
+</div>
+<div class="aspect-video bg-surface-container-highest relative group overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A blueprint-style architectural site map of a commercial facility overlaid with digital security camera icons and field-of-view cones. The background is a clean technical layout with structural grid lines. The lighting is bright and industrial, emphasizing a professional security planning environment for an enterprise client." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7UuYKjaS9yGH5DaAQ9NhdWLwgMPCEnezCubZAQSOf4d_allHwzbltAsCEhGl2xW1S8e9SO56Qx7U689SfUOie90Ah2gBTcUxtn63vr3WuUHsAwO0tj69GLEVXgtZmvW0AjzQpCjnsbIQrB3CTt36KlmURkzc7w65pywEyiitz6ZS005gQU3QnPDoCdWhXYOd6FrWhWYkoqvMMv9hFMq0xMVVzzBvWUHK7PTrnT9eOpIL2BmEC4jmu7cBmdGqXJqqH5mTJREz0X4zB"/>
+<div class="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center cursor-zoom-in">
+<span class="bg-white/90 text-primary px-4 py-2 rounded-full font-label-md shadow-lg">View Full Map</span>
+</div>
+</div>
+<div class="p-4 space-y-3">
+<div class="flex items-center gap-3 text-body-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="text-on-surface">Industrial District, Warehouse 4</span>
+</div>
+<div class="flex items-center gap-3 text-body-sm">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">videocam</span>
+<span class="text-on-surface">12 × 4K Turret Cameras Active</span>
+</div>
+</div>
+</div>
+<!-- Alert/Security Card -->
+<div class="bg-error-container/20 border border-error/20 rounded-xl p-6 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-error/5 rounded-full -mr-16 -mt-16"></div>
+<div class="flex gap-4">
+<div class="bg-error text-on-error w-10 h-10 rounded-lg flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined">warning</span>
+</div>
+<div>
+<h4 class="text-label-md font-bold text-on-error-container">Critical Requirement</h4>
+<p class="text-body-sm text-on-surface-variant mt-1">Ensure all exterior camera housings are IP67 rated before sealing mounts. Check weatherproofing gaskets.</p>
+</div>
+</div>
+</div>
+<!-- Technician Assistant Tool -->
+<div class="bg-primary-container text-on-primary-container rounded-xl p-6 shadow-lg border border-primary/20">
+<div class="flex items-center gap-3 mb-4">
+<span class="material-symbols-outlined text-[24px]">contact_support</span>
+<h4 class="text-label-md font-bold uppercase tracking-widest">Support Sync</h4>
+</div>
+<p class="text-body-sm mb-4 opacity-90 italic">"Need remote verification for NVR gateway settings?"</p>
+<button class="w-full bg-surface-container-lowest text-primary font-label-md text-label-md py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-white transition-colors">
+                        Connect with NOC
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center py-3 bg-surface-container dark:bg-surface-container-low border-t border-outline-variant dark:border-outline shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-dim text-on-primary-container dark:text-on-primary-fixed rounded-full px-5 py-1 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="assignment" style="font-variation-settings: 'FILL' 1;">assignment</span>
+<span class="text-label-sm font-label-sm">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="text-label-sm font-label-sm">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Inventory</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-5 py-1 hover:bg-surface-container-highest transition-all">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-label-sm font-label-sm">More</span>
+</div>
+</nav>
+<script>
+        const checkboxes = document.querySelectorAll('.checklist-checkbox');
+        const progressBar = document.getElementById('progress-bar');
+        const progressText = document.getElementById('progress-text');
+        const saveBtn = document.getElementById('save-btn');
+
+        function updateProgress() {
+            const total = checkboxes.length;
+            const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+            const percentage = Math.round((checked / total) * 100);
+            
+            progressBar.style.width = percentage + '%';
+            progressText.innerText = percentage + '%';
+
+            // Visual feedback on the list items
+            checkboxes.forEach(cb => {
+                const parent = cb.closest('label');
+                if (cb.checked) {
+                    parent.classList.add('bg-surface-container-low', 'opacity-70');
+                    parent.classList.remove('bg-surface-container-lowest');
+                } else {
+                    parent.classList.remove('bg-surface-container-low', 'opacity-70');
+                    parent.classList.add('bg-surface-container-lowest');
+                }
+            });
+        }
+
+        checkboxes.forEach(cb => {
+            cb.addEventListener('change', updateProgress);
+        });
+
+        saveBtn.addEventListener('click', () => {
+            saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> Saving...';
+            saveBtn.disabled = true;
+            
+            setTimeout(() => {
+                saveBtn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Saved';
+                saveBtn.classList.replace('bg-primary', 'bg-tertiary-container');
+                
+                setTimeout(() => {
+                    saveBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]">save</span> Save Progress';
+                    saveBtn.classList.replace('bg-tertiary-container', 'bg-primary');
+                    saveBtn.disabled = false;
+                }, 2000);
+            }, 1000);
+        });
+
+        // Background subtle pattern injection
+        document.body.style.backgroundImage = `radial-gradient(circle at 2px 2px, #e5e7eb 1px, transparent 0)`;
+        document.body.style.backgroundSize = `32px 32px`;
+    </script>
+<script src="pwa.js" defer></script>
+</body></html>

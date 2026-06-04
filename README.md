@@ -93,6 +93,29 @@ npx serve .
 
 ---
 
+## 📲 App Técnico (PWA instalable)
+
+Además del panel web, el repositorio incluye una **PWA real e instalable** para los técnicos de campo, construida a partir del diseño exportado de **Google Stitch** (carpeta `tecnico/`).
+
+| Pantalla | Archivo |
+|---|---|
+| Dashboard del técnico | `tecnico/index.html` |
+| Mis Órdenes | `tecnico/ordenes.html` |
+| Checklist CCTV | `tecnico/checklist.html` |
+| Evidencias y Firma | `tecnico/evidencias.html` |
+
+**Características PWA:**
+- 📱 **Instalable** en Android/iOS y escritorio (manifest + iconos maskable).
+- 🔌 **Funciona offline** mediante *service worker* (`tecnico/sw.js`) con precache del shell y *stale-while-revalidate* para CDN/fuentes.
+- 🧭 **Navegación inferior unificada** entre las 4 pantallas (`tecnico/pwa.js`).
+- 🎨 Diseño original de Stitch (Material 3 + Tailwind + Inter) intacto.
+
+**Cómo probarla:** sirve el proyecto (`python3 -m http.server`) y abre `…/tecnico/index.html`, o desde el panel web entra a **App de Campo → “Abrir App Técnico (PWA)”**. En móvil usa “Agregar a pantalla de inicio”.
+
+> El service worker requiere **HTTPS** o `localhost` para registrarse (Vercel/GitHub Pages ya cumplen).
+
+---
+
 ## 🏗️ Arquitectura (del demo)
 
 ```
@@ -100,14 +123,23 @@ seguridad33/
 ├── index.html                 # Punto de entrada (login + shell)
 ├── manifest.webmanifest        # PWA
 ├── vercel.json                 # Config de despliegue estático
-└── assets/
-    ├── css/
-    │   └── styles.css          # Sistema de diseño (tokens, light/dark, componentes)
-    └── js/
-        ├── data.js             # Datos MOCK, iconos SVG y logo
-        ├── ui.js               # Helpers de UI reutilizables + Chart.js
-        ├── modules.js          # Renderizadores de cada módulo (vistas)
-        └── app.js              # Shell, sidebar, router (hash) y arranque
+├── assets/
+│   ├── css/
+│   │   └── styles.css          # Sistema de diseño (tokens, light/dark, componentes)
+│   └── js/
+│       ├── data.js             # Datos MOCK, iconos SVG y logo
+│       ├── ui.js               # Helpers de UI reutilizables + Chart.js
+│       ├── modules.js          # Renderizadores de cada módulo (vistas)
+│       └── app.js              # Shell, sidebar, router (hash) y arranque
+└── tecnico/                    # PWA App Técnico (export de Google Stitch)
+    ├── index.html              # Dashboard del técnico
+    ├── ordenes.html            # Mis Órdenes
+    ├── checklist.html          # Checklist CCTV
+    ├── evidencias.html         # Evidencias y Firma
+    ├── pwa.js                  # SW register + navegación + install prompt
+    ├── sw.js                   # Service Worker (offline)
+    ├── manifest.webmanifest    # Manifest PWA
+    └── icon-*.png · icon.svg   # Iconos (incl. maskable)
 ```
 
 **Principios de diseño**
